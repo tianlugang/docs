@@ -1,4 +1,4 @@
-# Node.js 安装
+# Node.js Install
 
 * [install node.js using n](https://github.com/tj/n)
 
