@@ -92,161 +92,161 @@
       // 以下代码片段，来自webpack 4.19.0 源码, 书写顺序不代表执行顺序
 
       this.hooks = {
-        /** @type {SyncHook<Module>} */
-        buildModule: new SyncHook(["module"]),
-        /** @type {SyncHook<Module>} */
-        rebuildModule: new SyncHook(["module"]),
-        /** @type {SyncHook<Module, Error>} */
-        failedModule: new SyncHook(["module", "error"]),
-        /** @type {SyncHook<Module>} */
-        succeedModule: new SyncHook(["module"]),
-        /** @type {SyncWaterfallHook<DependencyReference, Dependency, Module>} */
-        dependencyReference: new SyncWaterfallHook([
-           "dependencyReference",
-           "dependency",
-           "module"
-        ]),
-        /** @type {SyncHook<Module[]>} */
-        finishModules: new SyncHook(["modules"]),
-        /** @type {SyncHook<Module>} */
-        finishRebuildingModule: new SyncHook(["module"]),
-        /** @type {SyncHook} */
-        unseal: new SyncHook([]),
-        /** @type {SyncHook} */
-        seal: new SyncHook([]),
-        /** @type {SyncHook} */
-        beforeChunks: new SyncHook([]),
-        /** @type {SyncHook<Chunk[]>} */
-        afterChunks: new SyncHook(["chunks"]),
-        /** @type {SyncBailHook<Module[]>} */
-        optimizeDependenciesBasic: new SyncBailHook(["modules"]),
-        /** @type {SyncBailHook<Module[]>} */
-        optimizeDependencies: new SyncBailHook(["modules"]),
-        /** @type {SyncBailHook<Module[]>} */
-        optimizeDependenciesAdvanced: new SyncBailHook(["modules"]),
-        /** @type {SyncBailHook<Module[]>} */
-        afterOptimizeDependencies: new SyncHook(["modules"]),
-        /** @type {SyncHook} */
-        optimize: new SyncHook([]),
-        /** @type {SyncBailHook<Module[]>} */
-        optimizeModulesBasic: new SyncBailHook(["modules"]),
-        /** @type {SyncBailHook<Module[]>} */
-        optimizeModules: new SyncBailHook(["modules"]),
-        /** @type {SyncBailHook<Module[]>} */
-        optimizeModulesAdvanced: new SyncBailHook(["modules"]),
-        /** @type {SyncHook<Module[]>} */
-        afterOptimizeModules: new SyncHook(["modules"]),
-        /** @type {SyncBailHook<Chunk[], ChunkGroup[]>} */
-        optimizeChunksBasic: new SyncBailHook(["chunks", "chunkGroups"]),
-        /** @type {SyncBailHook<Chunk[], ChunkGroup[]>} */
-        optimizeChunks: new SyncBailHook(["chunks", "chunkGroups"]),
-        /** @type {SyncBailHook<Chunk[], ChunkGroup[]>} */
-        optimizeChunksAdvanced: new SyncBailHook(["chunks", "chunkGroups"]),
-        /** @type {SyncHook<Chunk[], ChunkGroup[]>} */
-        afterOptimizeChunks: new SyncHook(["chunks", "chunkGroups"]),
-        /** @type {AsyncSeriesHook<Chunk[], Module[]>} */
-        optimizeTree: new AsyncSeriesHook(["chunks", "modules"]),
-        /** @type {SyncHook<Chunk[], Module[]>} */
-        afterOptimizeTree: new SyncHook(["chunks", "modules"]),
-        /** @type {SyncBailHook<Chunk[], Module[]>} */
-        optimizeChunkModulesBasic: new SyncBailHook(["chunks", "modules"]),
-        /** @type {SyncBailHook<Chunk[], Module[]>} */
-        optimizeChunkModules: new SyncBailHook(["chunks", "modules"]),
-        /** @type {SyncBailHook<Chunk[], Module[]>} */
-        optimizeChunkModulesAdvanced: new SyncBailHook(["chunks", "modules"]),
-        /** @type {SyncHook<Chunk[], Module[]>} */
-        afterOptimizeChunkModules: new SyncHook(["chunks", "modules"]),
-        /** @type {SyncBailHook} */
-        shouldRecord: new SyncBailHook([]),
-        /** @type {SyncHook<Module[], any>} */
-        reviveModules: new SyncHook(["modules", "records"]),
-        /** @type {SyncHook<Module[]>} */
-        optimizeModuleOrder: new SyncHook(["modules"]),
-        /** @type {SyncHook<Module[]>} */
-        advancedOptimizeModuleOrder: new SyncHook(["modules"]),
-        /** @type {SyncHook<Module[]>} */
-        beforeModuleIds: new SyncHook(["modules"]),
-        /** @type {SyncHook<Module[]>} */
-        moduleIds: new SyncHook(["modules"]),
-        /** @type {SyncHook<Module[]>} */
-        optimizeModuleIds: new SyncHook(["modules"]),
-        /** @type {SyncHook<Module[]>} */
-        afterOptimizeModuleIds: new SyncHook(["modules"]),
-        /** @type {SyncHook<Chunk[], any>} */
-        reviveChunks: new SyncHook(["chunks", "records"]),
-        /** @type {SyncHook<Chunk[]>} */
-        optimizeChunkOrder: new SyncHook(["chunks"]),
-        /** @type {SyncHook<Chunk[]>} */
-        beforeChunkIds: new SyncHook(["chunks"]),
-        /** @type {SyncHook<Chunk[]>} */
-        optimizeChunkIds: new SyncHook(["chunks"]),
-        /** @type {SyncHook<Chunk[]>} */
-        afterOptimizeChunkIds: new SyncHook(["chunks"]),
-        /** @type {SyncHook<Module[], any>} */
-        recordModules: new SyncHook(["modules", "records"]),
-        /** @type {SyncHook<Chunk[], any>} */
-        recordChunks: new SyncHook(["chunks", "records"]),
-        /** @type {SyncHook} */
-        beforeHash: new SyncHook([]),
-        /** @type {SyncHook<Chunk>} */
-        contentHash: new SyncHook(["chunk"]),
-        /** @type {SyncHook} */
-        afterHash: new SyncHook([]),
-        /** @type {SyncHook<any>} */
-        recordHash: new SyncHook(["records"]),
-        /** @type {SyncHook<Compilation, any>} */
-        record: new SyncHook(["compilation", "records"]),
-        /** @type {SyncHook} */
-        beforeModuleAssets: new SyncHook([]),
-        /** @type {SyncBailHook} */
-        shouldGenerateChunkAssets: new SyncBailHook([]),
-        /** @type {SyncHook} */
-        beforeChunkAssets: new SyncHook([]),
-        /** @type {SyncHook<Chunk[]>} */
-        additionalChunkAssets: new SyncHook(["chunks"]),
-        /** @type {AsyncSeriesHook} */
-        additionalAssets: new AsyncSeriesHook([]),
-        /** @type {AsyncSeriesHook<Chunk[]>} */
-        optimizeChunkAssets: new AsyncSeriesHook(["chunks"]),
-        /** @type {SyncHook<Chunk[]>} */
-        afterOptimizeChunkAssets: new SyncHook(["chunks"]),
-        /** @type {AsyncSeriesHook<CompilationAssets>} */
-        optimizeAssets: new AsyncSeriesHook(["assets"]),
-        /** @type {SyncHook<CompilationAssets>} */
-        afterOptimizeAssets: new SyncHook(["assets"]),
-        /** @type {SyncBailHook} */
-        needAdditionalSeal: new SyncBailHook([]),
-        /** @type {AsyncSeriesHook} */
-        afterSeal: new AsyncSeriesHook([]),
-        /** @type {SyncHook<Chunk, Hash>} */
-        chunkHash: new SyncHook(["chunk", "chunkHash"]),
-        /** @type {SyncHook<Module, string>} */
-        moduleAsset: new SyncHook(["module", "filename"]),
-        /** @type {SyncHook<Chunk, string>} */
-        chunkAsset: new SyncHook(["chunk", "filename"]),
-        /** @type {SyncWaterfallHook<string, TODO>} */
-        assetPath: new SyncWaterfallHook(["filename", "data"]), // TODO MainTemplate
-        /** @type {SyncBailHook} */
-        needAdditionalPass: new SyncBailHook([]),
-        /** @type {SyncHook<Compiler, string, number>} */
-        childCompiler: new SyncHook([
-            "childCompiler",
-            "compilerName",
-            "compilerIndex"
-        ]),
-        // TODO the following hooks are weirdly located here
-        // TODO move them for webpack 5
-        /** @type {SyncHook<object, Module>} */
-        normalModuleLoader: new SyncHook(["loaderContext", "module"]),
-        /** @type {SyncBailHook<Chunk[]>} */
-        optimizeExtractedChunksBasic: new SyncBailHook(["chunks"]),
-        /** @type {SyncBailHook<Chunk[]>} */
-        optimizeExtractedChunks: new SyncBailHook(["chunks"]),
-        /** @type {SyncBailHook<Chunk[]>} */
-        optimizeExtractedChunksAdvanced: new SyncBailHook(["chunks"]),
-        /** @type {SyncHook<Chunk[]>} */
-        afterOptimizeExtractedChunks: new SyncHook(["chunks"])
-        }
+         /** @type {SyncHook<Module>} */
+         buildModule: new SyncHook(["module"]),
+         /** @type {SyncHook<Module>} */
+         rebuildModule: new SyncHook(["module"]),
+         /** @type {SyncHook<Module, Error>} */
+         failedModule: new SyncHook(["module", "error"]),
+         /** @type {SyncHook<Module>} */
+         succeedModule: new SyncHook(["module"]),
+         /** @type {SyncWaterfallHook<DependencyReference, Dependency, Module>} */
+         dependencyReference: new SyncWaterfallHook([
+            "dependencyReference",
+            "dependency",
+            "module"
+         ]),
+         /** @type {SyncHook<Module[]>} */
+         finishModules: new SyncHook(["modules"]),
+         /** @type {SyncHook<Module>} */
+         finishRebuildingModule: new SyncHook(["module"]),
+         /** @type {SyncHook} */
+         unseal: new SyncHook([]),
+         /** @type {SyncHook} */
+         seal: new SyncHook([]),
+         /** @type {SyncHook} */
+         beforeChunks: new SyncHook([]),
+         /** @type {SyncHook<Chunk[]>} */
+         afterChunks: new SyncHook(["chunks"]),
+         /** @type {SyncBailHook<Module[]>} */
+         optimizeDependenciesBasic: new SyncBailHook(["modules"]),
+         /** @type {SyncBailHook<Module[]>} */
+         optimizeDependencies: new SyncBailHook(["modules"]),
+         /** @type {SyncBailHook<Module[]>} */
+         optimizeDependenciesAdvanced: new SyncBailHook(["modules"]),
+         /** @type {SyncBailHook<Module[]>} */
+         afterOptimizeDependencies: new SyncHook(["modules"]),
+         /** @type {SyncHook} */
+         optimize: new SyncHook([]),
+         /** @type {SyncBailHook<Module[]>} */
+         optimizeModulesBasic: new SyncBailHook(["modules"]),
+         /** @type {SyncBailHook<Module[]>} */
+         optimizeModules: new SyncBailHook(["modules"]),
+         /** @type {SyncBailHook<Module[]>} */
+         optimizeModulesAdvanced: new SyncBailHook(["modules"]),
+         /** @type {SyncHook<Module[]>} */
+         afterOptimizeModules: new SyncHook(["modules"]),
+         /** @type {SyncBailHook<Chunk[], ChunkGroup[]>} */
+         optimizeChunksBasic: new SyncBailHook(["chunks", "chunkGroups"]),
+         /** @type {SyncBailHook<Chunk[], ChunkGroup[]>} */
+         optimizeChunks: new SyncBailHook(["chunks", "chunkGroups"]),
+         /** @type {SyncBailHook<Chunk[], ChunkGroup[]>} */
+         optimizeChunksAdvanced: new SyncBailHook(["chunks", "chunkGroups"]),
+         /** @type {SyncHook<Chunk[], ChunkGroup[]>} */
+         afterOptimizeChunks: new SyncHook(["chunks", "chunkGroups"]),
+         /** @type {AsyncSeriesHook<Chunk[], Module[]>} */
+         optimizeTree: new AsyncSeriesHook(["chunks", "modules"]),
+         /** @type {SyncHook<Chunk[], Module[]>} */
+         afterOptimizeTree: new SyncHook(["chunks", "modules"]),
+         /** @type {SyncBailHook<Chunk[], Module[]>} */
+         optimizeChunkModulesBasic: new SyncBailHook(["chunks", "modules"]),
+         /** @type {SyncBailHook<Chunk[], Module[]>} */
+         optimizeChunkModules: new SyncBailHook(["chunks", "modules"]),
+         /** @type {SyncBailHook<Chunk[], Module[]>} */
+         optimizeChunkModulesAdvanced: new SyncBailHook(["chunks", "modules"]),
+         /** @type {SyncHook<Chunk[], Module[]>} */
+         afterOptimizeChunkModules: new SyncHook(["chunks", "modules"]),
+         /** @type {SyncBailHook} */
+         shouldRecord: new SyncBailHook([]),
+         /** @type {SyncHook<Module[], any>} */
+         reviveModules: new SyncHook(["modules", "records"]),
+         /** @type {SyncHook<Module[]>} */
+         optimizeModuleOrder: new SyncHook(["modules"]),
+         /** @type {SyncHook<Module[]>} */
+         advancedOptimizeModuleOrder: new SyncHook(["modules"]),
+         /** @type {SyncHook<Module[]>} */
+         beforeModuleIds: new SyncHook(["modules"]),
+         /** @type {SyncHook<Module[]>} */
+         moduleIds: new SyncHook(["modules"]),
+         /** @type {SyncHook<Module[]>} */
+         optimizeModuleIds: new SyncHook(["modules"]),
+         /** @type {SyncHook<Module[]>} */
+         afterOptimizeModuleIds: new SyncHook(["modules"]),
+         /** @type {SyncHook<Chunk[], any>} */
+         reviveChunks: new SyncHook(["chunks", "records"]),
+         /** @type {SyncHook<Chunk[]>} */
+         optimizeChunkOrder: new SyncHook(["chunks"]),
+         /** @type {SyncHook<Chunk[]>} */
+         beforeChunkIds: new SyncHook(["chunks"]),
+         /** @type {SyncHook<Chunk[]>} */
+         optimizeChunkIds: new SyncHook(["chunks"]),
+         /** @type {SyncHook<Chunk[]>} */
+         afterOptimizeChunkIds: new SyncHook(["chunks"]),
+         /** @type {SyncHook<Module[], any>} */
+         recordModules: new SyncHook(["modules", "records"]),
+         /** @type {SyncHook<Chunk[], any>} */
+         recordChunks: new SyncHook(["chunks", "records"]),
+         /** @type {SyncHook} */
+         beforeHash: new SyncHook([]),
+         /** @type {SyncHook<Chunk>} */
+         contentHash: new SyncHook(["chunk"]),
+         /** @type {SyncHook} */
+         afterHash: new SyncHook([]),
+         /** @type {SyncHook<any>} */
+         recordHash: new SyncHook(["records"]),
+         /** @type {SyncHook<Compilation, any>} */
+         record: new SyncHook(["compilation", "records"]),
+         /** @type {SyncHook} */
+         beforeModuleAssets: new SyncHook([]),
+         /** @type {SyncBailHook} */
+         shouldGenerateChunkAssets: new SyncBailHook([]),
+         /** @type {SyncHook} */
+         beforeChunkAssets: new SyncHook([]),
+         /** @type {SyncHook<Chunk[]>} */
+         additionalChunkAssets: new SyncHook(["chunks"]),
+         /** @type {AsyncSeriesHook} */
+         additionalAssets: new AsyncSeriesHook([]),
+         /** @type {AsyncSeriesHook<Chunk[]>} */
+         optimizeChunkAssets: new AsyncSeriesHook(["chunks"]),
+         /** @type {SyncHook<Chunk[]>} */
+         afterOptimizeChunkAssets: new SyncHook(["chunks"]),
+         /** @type {AsyncSeriesHook<CompilationAssets>} */
+         optimizeAssets: new AsyncSeriesHook(["assets"]),
+         /** @type {SyncHook<CompilationAssets>} */
+         afterOptimizeAssets: new SyncHook(["assets"]),
+         /** @type {SyncBailHook} */
+         needAdditionalSeal: new SyncBailHook([]),
+         /** @type {AsyncSeriesHook} */
+         afterSeal: new AsyncSeriesHook([]),
+         /** @type {SyncHook<Chunk, Hash>} */
+         chunkHash: new SyncHook(["chunk", "chunkHash"]),
+         /** @type {SyncHook<Module, string>} */
+         moduleAsset: new SyncHook(["module", "filename"]),
+         /** @type {SyncHook<Chunk, string>} */
+         chunkAsset: new SyncHook(["chunk", "filename"]),
+         /** @type {SyncWaterfallHook<string, TODO>} */
+         assetPath: new SyncWaterfallHook(["filename", "data"]), // TODO MainTemplate
+         /** @type {SyncBailHook} */
+         needAdditionalPass: new SyncBailHook([]),
+         /** @type {SyncHook<Compiler, string, number>} */
+         childCompiler: new SyncHook([
+               "childCompiler",
+               "compilerName",
+               "compilerIndex"
+         ]),
+         // TODO the following hooks are weirdly located here
+         // TODO move them for webpack 5
+         /** @type {SyncHook<object, Module>} */
+         normalModuleLoader: new SyncHook(["loaderContext", "module"]),
+         /** @type {SyncBailHook<Chunk[]>} */
+         optimizeExtractedChunksBasic: new SyncBailHook(["chunks"]),
+         /** @type {SyncBailHook<Chunk[]>} */
+         optimizeExtractedChunks: new SyncBailHook(["chunks"]),
+         /** @type {SyncBailHook<Chunk[]>} */
+         optimizeExtractedChunksAdvanced: new SyncBailHook(["chunks"]),
+         /** @type {SyncHook<Chunk[]>} */
+         afterOptimizeExtractedChunks: new SyncHook(["chunks"])
+      }
 
    ```
 

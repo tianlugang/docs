@@ -20,4 +20,7 @@ And Others, To install or update nvm, you can use the install script using:
 
   # use wget
   wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+
+  # eg
+  nvm install 10.15.1 --with-full-icu
 ```
