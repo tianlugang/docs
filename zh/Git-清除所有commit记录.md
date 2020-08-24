@@ -12,3 +12,8 @@
 1. 运行 `git log`， 选择指定的 `commit_id`
 2. 运行 `git reset --hard $commit_id`
 3. 提交 `git push origin HEAD --force`
+
+## `gitignore`生效
+1. `git rm -r --cached .` // 删除本地缓存
+2. `git add .` // 添加要提交的文件
+3. `git commit -m 'update .gitignore'` // 更新本地的缓存
